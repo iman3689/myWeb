@@ -102,7 +102,7 @@ export default function ProjectCard({ no, title, tag, desc, tech, thumb, delay, 
               display: "flex", alignItems: "center", gap: 8,
               color: "var(--red)", fontSize: 13, fontWeight: 600,
             }}>
-              <span>View on GitHub</span>
+              <span>View my project</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
                 style={{
