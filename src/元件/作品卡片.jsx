@@ -6,12 +6,11 @@ import { useState } from "react";
 import { FadeIn } from "./通用.jsx";
 import { THUMBS } from "./作品縮圖.jsx";
 
-export default function ProjectCard({ no, title, tag, desc, tech, thumb, delay, featured }) {
+export default function ProjectCard({ no, title, tag, desc, tech, thumb, delay, featured, link }) {
   const [hovered, setHovered] = useState(false);
   const Thumb = THUMBS[thumb];
 
-  return (
-    <FadeIn delay={delay}>
+  const card = (
       <article
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -20,7 +19,7 @@ export default function ProjectCard({ no, title, tag, desc, tech, thumb, delay, 
           background: "#fff",
           borderRadius: 12,
           border: "1px solid var(--border)",
-          cursor: "pointer",
+          cursor: link ? "pointer" : "default",
           transform: hovered ? "translateY(-4px)" : "translateY(0)",
           boxShadow: hovered
             ? "0 24px 56px -20px rgba(26,42,78,0.22)"
@@ -97,23 +96,35 @@ export default function ProjectCard({ no, title, tag, desc, tech, thumb, delay, 
             </div>
           )}
 
-          <div style={{
-            marginTop: "auto", paddingTop: 18,
-            display: "flex", alignItems: "center", gap: 8,
-            color: "var(--red)", fontSize: 13, fontWeight: 600,
-          }}>
-            <span>View case study</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-              style={{
-                transform: hovered ? "translateX(4px)" : "translateX(0)",
-                transition: "transform .35s cubic-bezier(.22,1,.36,1)",
-              }}>
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </div>
+          {link && (
+            <div style={{
+              marginTop: "auto", paddingTop: 18,
+              display: "flex", alignItems: "center", gap: 8,
+              color: "var(--red)", fontSize: 13, fontWeight: 600,
+            }}>
+              <span>View on GitHub</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+                style={{
+                  transform: hovered ? "translateX(4px)" : "translateX(0)",
+                  transition: "transform .35s cubic-bezier(.22,1,.36,1)",
+                }}>
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          )}
         </div>
       </article>
+  );
+
+  return (
+    <FadeIn delay={delay}>
+      {link ? (
+        <a href={link} target="_blank" rel="noopener noreferrer"
+          style={{ textDecoration: "none", color: "inherit", display: "block" }}>
+          {card}
+        </a>
+      ) : card}
     </FadeIn>
   );
 }

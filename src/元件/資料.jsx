@@ -37,6 +37,7 @@ export const PROJECTS = [
     tech: ["React", "Vite", "CSS"],
     thumb: "web",
     featured: true,
+    link: "https://github.com/iman3689/myWeb",
   },
 ];
 
