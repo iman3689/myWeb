@@ -15,8 +15,8 @@ export const SKILL_GROUPS = [
   {
     label: "Design",
     items: [
-      { name: "UI / UX Design", level: 80 },
-      { name: "Figma", level: 75 },
+      { name: "Illustrator", level: 80 },
+      { name: "Photoshop", level: 75 },
     ],
     tools: ["Auto Layout", "Wireframing", "Prototyping"],
   },

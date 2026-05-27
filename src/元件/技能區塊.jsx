@@ -7,7 +7,7 @@ import { FadeIn, SectionHead } from "./通用.jsx";
 import { SKILL_GROUPS } from "./資料.jsx";
 
 export default function Skills() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1);
 
   return (
     <section id="skills" className="section-pad" style={{
