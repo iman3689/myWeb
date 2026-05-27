@@ -102,7 +102,7 @@ export function MobileNav({ open, setOpen, items }) {
             {s.label}
           </a>
         ))}
-        <div style={{ marginTop: "auto", fontSize: 12, color: "var(--text-light)" }}>iman@example.com</div>
+        <div style={{ marginTop: "auto", fontSize: 12, color: "var(--text-light)" }}>iman.wang36@gmail.com</div>
       </aside>
     </>
   );

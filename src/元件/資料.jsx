@@ -41,4 +41,9 @@ export const PROJECTS = [
   },
 ];
 
-export const NAV_ITEMS = ["About", "Skills", "Works", "Contact"];
+export const NAV_ITEMS = [
+  { label: "About me", hash: "about" },
+  { label: "Skills", hash: "skills" },
+  { label: "Works", hash: "works" },
+  { label: "Contact", hash: "contact" },
+];

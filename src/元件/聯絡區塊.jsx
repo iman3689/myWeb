@@ -38,7 +38,7 @@ export default function Contact() {
             letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 22,
           }}>
             <span style={{ width: 28, height: 1.5, background: "var(--red)" }} />
-            04 · Contact
+            Contact
           </div>
         </FadeIn>
 
