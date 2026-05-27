@@ -16,13 +16,15 @@ export default function Works() {
       <SectionHead kicker="Selected Works" title="作品集" />
       <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
         <ProjectCard no="01" {...PROJECTS[0]} delay={0} />
-        <div className="projects-grid" style={{
-          display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24,
-        }}>
-          {PROJECTS.slice(1).map((p, i) => (
-            <ProjectCard key={p.title} no={(i + 2).toString().padStart(2, "0")} {...p} delay={i * 0.06} />
-          ))}
-        </div>
+        {PROJECTS.length > 1 && (
+          <div className="projects-grid" style={{
+            display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24,
+          }}>
+            {PROJECTS.slice(1).map((p, i) => (
+              <ProjectCard key={p.title} no={(i + 2).toString().padStart(2, "0")} {...p} delay={i * 0.06} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
