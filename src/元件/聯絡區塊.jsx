@@ -7,7 +7,7 @@ import { FadeIn } from "./通用.jsx";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
-  const email = "iman@example.com";
+  const email = "iman.wang36@gmail.com";
   const copy = () => {
     navigator.clipboard?.writeText(email);
     setCopied(true);
@@ -127,11 +127,9 @@ export default function Contact() {
             position: "relative", zIndex: 1,
           }}>
             {[
-              ["GitHub", "github.com/iman"],
-              ["Instagram", "@iman.designs"],
-              ["Threads", "@iman"],
-            ].map(([label, handle]) => (
-              <a key={label} href="#" className="linkUnderline" style={{
+              ["GitHub", "github.com/iman3689", "https://github.com/iman3689"],
+            ].map(([label, handle, href]) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="linkUnderline" style={{
                 color: "#fff", textDecoration: "none", fontSize: 13,
                 display: "flex", alignItems: "baseline", gap: 8, opacity: 0.85,
               }}>
