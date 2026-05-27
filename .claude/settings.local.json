@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wsl.exe -d Ubuntu-24.04 -- bash -lc 'cd \"/home/iman/Merket Weekly/server\" && exec node src/index.js')",
+      "PowerShell($r = Invoke-WebRequest -UseBasicParsing -Uri 'http://localhost:3001/api/infrastructure-pressure' -TimeoutSec 60; $j = $r.Content | ConvertFrom-Json; $j.indicators | ForEach-Object { if \\($_.error\\) { Write-Output \"[$\\($_.id\\)] ERROR: $\\($_.error\\)\" } else { Write-Output \"[$\\($_.id\\)] $\\($_.title\\): $\\($_.valueDisplay\\) / $\\($_.percentileDisplay\\)\" } })",
+      "PowerShell($r = Invoke-WebRequest -UseBasicParsing -Uri 'http://localhost:5173/src/App.jsx' -TimeoutSec 5; if \\($r.Content -match 'useTheme' -and $r.Content -match 'theme-toggle'\\) { Write-Output \"HMR picked up theme toggle ✓\" } else { Write-Output \"App.jsx served but theme markers not found\" })",
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell($q = \\(Invoke-WebRequest -UseBasicParsing 'http://localhost:3001/api/question-cards' -TimeoutSec 30\\).Content | ConvertFrom-Json; $q.cards[1] | ConvertTo-Json -Depth 3)"
+    ]
+  }
+}
