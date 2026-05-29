@@ -154,8 +154,47 @@ function ThumbMusic({ hovered }) {
   );
 }
 
+function ThumbMarket({ hovered }) {
+  // 恐慌貪婪儀表：半圓弧 + 指針，hover 時指針從恐慌掃向貪婪
+  const cx = 160, cy = 138, r = 74;
+  const polar = (deg, rad = r) => ({
+    x: cx + rad * Math.sin((deg * Math.PI) / 180),
+    y: cy - rad * Math.cos((deg * Math.PI) / 180),
+  });
+  const arc = (from, to) => {
+    const a = polar(-90 + (from / 100) * 180);
+    const b = polar(-90 + (to / 100) * 180);
+    return `M ${a.x} ${a.y} A ${r} ${r} 0 0 1 ${b.x} ${b.y}`;
+  };
+  const needleDeg = -90 + ((hovered ? 78 : 32) / 100) * 180;
+  return (
+    <svg viewBox="0 0 320 200" style={{ width: "100%", height: "100%", display: "block" }}>
+      <rect width="320" height="200" fill="#F6F5F1" />
+      {/* 四段情緒弧：極恐 / 恐慌 / 貪婪 / 極貪 */}
+      <path d={arc(0, 25)} fill="none" stroke="#C8242A" strokeWidth="13" strokeLinecap="round" opacity="0.85" />
+      <path d={arc(25, 50)} fill="none" stroke="#E08A3C" strokeWidth="13" />
+      <path d={arc(50, 75)} fill="none" stroke="#6B9A6E" strokeWidth="13" />
+      <path d={arc(75, 100)} fill="none" stroke="#3D8A6E" strokeWidth="13" strokeLinecap="round" opacity="0.85" />
+      {/* 指針 */}
+      <g style={{ transform: `rotate(${needleDeg}deg)`, transformOrigin: `${cx}px ${cy}px`, transition: "transform 1s cubic-bezier(.22,1,.36,1)" }}>
+        <polygon points={`${cx - 4},${cy + 4} ${cx + 4},${cy + 4} ${cx + 1.2},${cy - r + 10} ${cx - 1.2},${cy - r + 10}`} fill="#1A2A4E" />
+      </g>
+      <circle cx={cx} cy={cy} r="7" fill="#1A2A4E" />
+      {/* 右上 sparkline 小折線，呼應資料儀表 */}
+      <polyline
+        points="232,52 246,44 258,58 270,38 284,48 296,30"
+        fill="none" stroke="#C8242A" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"
+        opacity={hovered ? 1 : 0.55} style={{ transition: "opacity .4s" }} />
+      <text x={cx} y="60" textAnchor="middle" fontFamily="DM Mono, monospace" fontSize="13" fontWeight="600" fill="#1A2A4E" letterSpacing="1">
+        MARKET STATE
+      </text>
+    </svg>
+  );
+}
+
 export const THUMBS = {
   web: ThumbWeb,
+  market: ThumbMarket,
   weather: ThumbWeather,
   tasks: ThumbTasks,
   color: ThumbColor,
